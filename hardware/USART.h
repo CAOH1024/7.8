@@ -1,20 +1,20 @@
 #ifndef __USART_H
 #define __USART_H
 /***********************************************
-¹«Ë¾£ºÂÖÈ¤¿Æ¼¼£¨¶«Ý¸£©ÓÐÏÞ¹«Ë¾
-Æ·ÅÆ£ºWHEELTEC
-¹ÙÍø£ºwheeltec.net
-ÌÔ±¦µêÆÌ£ºshop114407458.taobao.com 
-ËÙÂôÍ¨: https://minibalance.aliexpress.com/store/4455017
-°æ±¾£ºV1.0
-ÐÞ¸ÄÊ±¼ä£º2023-01-04
+ï¿½ï¿½Ë¾ï¿½ï¿½ï¿½ï¿½È¤ï¿½Æ¼ï¿½ï¿½ï¿½ï¿½ï¿½Ý¸ï¿½ï¿½ï¿½ï¿½ï¿½Þ¹ï¿½Ë¾
+Æ·ï¿½Æ£ï¿½WHEELTEC
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½wheeltec.net
+ï¿½Ô±ï¿½ï¿½ï¿½ï¿½Ì£ï¿½shop114407458.taobao.com 
+ï¿½ï¿½ï¿½ï¿½Í¨: https://minibalance.aliexpress.com/store/4455017
+ï¿½æ±¾ï¿½ï¿½V1.0
+ï¿½Þ¸ï¿½Ê±ï¿½ä£º2023-01-04
 
 Brand: WHEELTEC
 Website: wheeltec.net
 Taobao shop: shop114407458.taobao.com 
 Aliexpress: https://minibalance.aliexpress.com/store/4455017
 Version: V1.0
-Update£º2023-01-04
+Updateï¿½ï¿½2023-01-04
 
 All rights reserved
 ***********************************************/
@@ -24,17 +24,18 @@ All rights reserved
 #define huart5_FRAME_HEADER_2 0x55
 #define huart5_FRAME_TAIL 0x0D
 typedef struct {
-    uint8_t label;  //Ê¶±ðÎïÌåµÄÀà±ð£¬¡¾0£ºÀ¶É«£¬1£ººìÉ«¡¿
-    uint16_t x;     //ÒÔ×óÉÏ½ÇÎªÔ­µã£¬ÏòÓÒÎªÕý£¬ºá×ø±ê¡¾Ä¬ÈÏ×î´ó800¡¿
-    uint16_t y;     //×Ý×ø±ê¡¾Ä¬ÈÏ×î´ó480¡¿
-    uint16_t w;     //ÎïÌåµÄ¿í¶È
-    uint16_t h;     //ÎïÌåµÄ¸ß¶È
+    uint8_t label;  //Ê¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ð£¬¡ï¿½0ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½1ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½
+    uint16_t x;     //ï¿½ï¿½ï¿½ï¿½ï¿½Ï½ï¿½ÎªÔ­ï¿½ã£¬ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê¡¾Ä¬ï¿½ï¿½ï¿½ï¿½ï¿½800ï¿½ï¿½
+    uint16_t y;     //ï¿½ï¿½ï¿½ï¿½ï¿½ê¡¾Ä¬ï¿½ï¿½ï¿½ï¿½ï¿½480ï¿½ï¿½
+    uint16_t w;     //ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½
+    uint16_t h;     //ï¿½ï¿½ï¿½ï¿½Ä¸ß¶ï¿½
 	uint32_t count;
 }huart5_TargetInfo;
-extern huart5_TargetInfo huart5_targets[10];//½«Õâ¸ö½á¹¹Ìå¶¨Òå³É¿ÉÒÔ±»Íâ²¿Ê¹ÓÃµÄ
-extern huart5_TargetInfo huart5_targets_num[10][10];  // 7 ÖÖÑÕÉ«£¬Ã¿ÖÖÑÕÉ«×î¶à´æ´¢ 10 ¸öÇò
+extern huart5_TargetInfo huart5_targets[10];//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½á¹¹ï¿½å¶¨ï¿½ï¿½É¿ï¿½ï¿½Ô±ï¿½ï¿½â²¿Ê¹ï¿½Ãµï¿½
+extern huart5_TargetInfo huart5_targets_num[10][10];  // 7 ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½Ã¿ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½ï¿½æ´¢ 10 ï¿½ï¿½ï¿½ï¿½
 extern uint8_t Serial_Rx_HEXPackage[2];
 extern uint8_t Serial_Tx_HEXPackage[6];
+void usart1_sendpackage(uint8_t data);
 extern uint8_t color_update_flag;
 extern uint16_t Serial_RxFlag;
 void Serial1_ReceiveHEXPackage(void);
@@ -43,6 +44,8 @@ void uart_init(u32 bound);
 void USART1_IRQHandler(void);
 void handle_packet(uint8_t *buffer, uint8_t length);
 int calculate_distance(int x1, int y1, int x2, int y2);
+void Data_Process(double *x, double *y);
+
 #endif	   
 
 

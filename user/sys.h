@@ -89,6 +89,7 @@ typedef struct
 #include "USART.h"
 #include "Timer.h"
 #include "proc.h"
+#include "LED.h"
 extern double x,y,error_x,error_y;
 extern uint16_t task_status;
 extern uint16_t pwm_x,pwm_y;
