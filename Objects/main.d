@@ -1,7 +1,7 @@
 .\objects\main.o: user\main.c
 .\objects\main.o: .\start\stm32f10x.h
 .\objects\main.o: .\start\core_cm3.h
-.\objects\main.o: E:\keil5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\main.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\main.o: .\start\system_stm32f10x.h
 .\objects\main.o: .\user\stm32f10x_conf.h
 .\objects\main.o: .\library\stm32f10x_adc.h
@@ -33,6 +33,7 @@
 .\objects\main.o: .\hardware\motor.h
 .\objects\main.o: .\user\sys.h
 .\objects\main.o: .\hardware\USART.h
-.\objects\main.o: E:\keil5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\main.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\main.o: .\hardware\Timer.h
-.\objects\main.o: E:\keil5\ARM\ARMCC\Bin\..\include\math.h
+.\objects\main.o: .\hardware\proc.h
+.\objects\main.o: D:\keil5\ARM\ARMCC\Bin\..\include\math.h

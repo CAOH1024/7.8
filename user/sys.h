@@ -68,6 +68,8 @@
 #define dir_up 0
 #define dir_down 1
 
+#define pi 3.14159
+
 #define dir_x PAout(5)
 #define dir_y PAout(0)
 typedef struct
@@ -86,6 +88,9 @@ typedef struct
 #include "motor.h"
 #include "USART.h"
 #include "Timer.h"
+#include "proc.h"
+extern double x,y,error_x,error_y;
+extern uint16_t move_status,task_status;
 extern uint16_t pwm_x,pwm_y;
 extern u8 tim4_flag; 
 #include <stdint.h>

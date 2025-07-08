@@ -1,6 +1,7 @@
 #include "stm32f10x.h"                  // Device header
 #include "Timer.h"
  #include "sys.h"
+ 
 void Timer4_Init(u16 arr,u16 psc)  
 {  
 	TIM_TimeBaseInitTypeDef TIM_TimeBaseInitStruct;
@@ -31,3 +32,4 @@ void TIM4_IRQHandler(void)
 	}
 	TIM_ClearITPendingBit(TIM4,TIM_IT_Update);
 }
+

@@ -725,6 +725,16 @@
               <FileType>5</FileType>
               <FilePath>.\hardware\Timer.h</FilePath>
             </File>
+            <File>
+              <FileName>proc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\hardware\proc.c</FilePath>
+            </File>
+            <File>
+              <FileName>proc.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\hardware\proc.h</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

@@ -1,4 +1,5 @@
 #include "sys.h"
+
 /***********************************************
 公司：轮趣科技（东莞）有限公司
 品牌：WHEELTEC
@@ -23,6 +24,10 @@ All rights reserved
 
 uint16_t pwm_x,pwm_y;
 u8 tim4_flag=0;
+double x,y;
+double error_x, error_y;
+uint16_t move_status, task_status=1;
+
 void MY_NVIC_SetVectorTable(u32 NVIC_VectTab, u32 Offset)	 
 { 	   	 
 	SCB->VTOR = NVIC_VectTab|(Offset & (u32)0x1FFFFF80);//设置NVIC的向量表偏移寄存器

@@ -32,6 +32,7 @@
 ".\objects\motor.o"
 ".\objects\usart.o"
 ".\objects\timer.o"
+".\objects\proc.o"
 --strict --scatter ".\Objects\GPIO.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
