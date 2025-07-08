@@ -1,27 +1,5 @@
 #include "sys.h"
 
-/***********************************************
-¹«Ë¾£ºÂÖÈ¤¿Æ¼¼£¨¶«Ý¸£©ÓÐÏÞ¹«Ë¾
-Æ·ÅÆ£ºWHEELTEC
-¹ÙÍø£ºwheeltec.net
-ÌÔ±¦µêÆÌ£ºshop114407458.taobao.com 
-ËÙÂôÍ¨: https://minibalance.aliexpress.com/store/4455017
-°æ±¾£ºV1.0
-ÐÞ¸ÄÊ±¼ä£º2023-01-04
-
-Brand: WHEELTEC
-Website: wheeltec.net
-Taobao shop: shop114407458.taobao.com 
-Aliexpress: https://minibalance.aliexpress.com/store/4455017
-Version: V1.0
-Update£º2023-01-04
-
-All rights reserved
-***********************************************/
-//ÉèÖÃÏòÁ¿±íÆ«ÒÆµØÖ·
-//NVIC_VectTab:»ùÖ·
-//Offset:Æ«ÒÆÁ¿		
-
 uint16_t pwm_x,pwm_y;
 u8 tim4_flag=0;
 double x,y;
@@ -30,8 +8,8 @@ uint16_t move_status, task_status=1;
 
 void MY_NVIC_SetVectorTable(u32 NVIC_VectTab, u32 Offset)	 
 { 	   	 
-	SCB->VTOR = NVIC_VectTab|(Offset & (u32)0x1FFFFF80);//ÉèÖÃNVICµÄÏòÁ¿±íÆ«ÒÆ¼Ä´æÆ÷
-	//ÓÃÓÚ±êÊ¶ÏòÁ¿±íÊÇÔÚCODEÇø»¹ÊÇÔÚRAMÇø
+	SCB->VTOR = NVIC_VectTab|(Offset & (u32)0x1FFFFF80);//ï¿½ï¿½ï¿½ï¿½NVICï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ«ï¿½Æ¼Ä´ï¿½ï¿½ï¿½
+	//ï¿½ï¿½ï¿½Ú±ï¿½Ê¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½CODEï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½RAMï¿½ï¿½
 }
 
 
@@ -40,18 +18,18 @@ void WFI_SET(void)
 {
 	__ASM volatile("wfi");		  
 }
-//¹Ø±ÕËùÓÐÖÐ¶Ï
+//ï¿½Ø±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½
 void INTX_DISABLE(void)
 {		  
 	__ASM volatile("cpsid i");
 }
-//¿ªÆôËùÓÐÖÐ¶Ï
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½
 void INTX_ENABLE(void)
 {
 	__ASM volatile("cpsie i");		  
 }
-//ÉèÖÃÕ»¶¥µØÖ·
-//addr:Õ»¶¥µØÖ·
+//ï¿½ï¿½ï¿½ï¿½Õ»ï¿½ï¿½ï¿½ï¿½Ö·
+//addr:Õ»ï¿½ï¿½ï¿½ï¿½Ö·
 __asm void MSR_MSP(u32 addr) 
 {
     MSR MSP, r0 			//set Main Stack value
@@ -59,8 +37,8 @@ __asm void MSR_MSP(u32 addr)
 }
 
 
-//JTAGÄ£Ê½ÉèÖÃ,ÓÃÓÚÉèÖÃJTAGµÄÄ£Ê½
-//mode:jtag,swdÄ£Ê½ÉèÖÃ;00,È«Ê¹ÄÜ;01,Ê¹ÄÜSWD;10,È«¹Ø±Õ;	   
+//JTAGÄ£Ê½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½JTAGï¿½ï¿½Ä£Ê½
+//mode:jtag,swdÄ£Ê½ï¿½ï¿½ï¿½ï¿½;00,È«Ê¹ï¿½ï¿½;01,Ê¹ï¿½ï¿½SWD;10,È«ï¿½Ø±ï¿½;	   
 //#define JTAG_SWD_DISABLE   0X02
 //#define SWD_ENABLE         0X01
 //#define JTAG_SWD_ENABLE    0X00		  
@@ -69,9 +47,9 @@ void JTAG_Set(u8 mode)
 	u32 temp;
 	temp=mode;
 	temp<<=25;
-	RCC->APB2ENR|=1<<0;     //¿ªÆô¸¨ÖúÊ±ÖÓ	   
-	AFIO->MAPR&=0XF8FFFFFF; //Çå³ýMAPRµÄ[26:24]
-	AFIO->MAPR|=temp;       //ÉèÖÃjtagÄ£Ê½
+	RCC->APB2ENR|=1<<0;     //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½	   
+	AFIO->MAPR&=0XF8FFFFFF; //ï¿½ï¿½ï¿½MAPRï¿½ï¿½[26:24]
+	AFIO->MAPR|=temp;       //ï¿½ï¿½ï¿½ï¿½jtagÄ£Ê½
 } 
-//ÏµÍ³Ê±ÖÓ³õÊ¼»¯º¯Êý
-//pll:Ñ¡ÔñµÄ±¶ÆµÊý£¬´Ó2¿ªÊ¼£¬×î´óÖµÎª16		 
+//ÏµÍ³Ê±ï¿½Ó³ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+//pll:Ñ¡ï¿½ï¿½Ä±ï¿½Æµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½2ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ÖµÎª16		 
