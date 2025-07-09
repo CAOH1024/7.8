@@ -93,13 +93,13 @@ void EXTI9_5_IRQHandler(void){
 	if(EXTI_GetFlagStatus(EXTI_Line5)){     //因为两条中断线用的都是同一个函数,因此通过获取中断标志位来判断是谁触发的中断
         task_status = 1; //设置任务状态为1,表示任务已完成
         Delay_ms(10);                       //消除机械按键的抖动
-        while(GPIO_ReadInputDataBit(GPIOB,GPIO_Pin_5)==1);
+        while(GPIO_ReadInputDataBit(GPIOB,GPIO_Pin_5)==0);
         Delay_ms(10);
         EXTI_ClearITPendingBit(EXTI_Line5); //需要手动清除中断标志位,否则会一直重复触发.
 	}else if(EXTI_GetFlagStatus(EXTI_Line6)){     //因为两条中断线用的都是同一个函数,因此通过获取中断标志位来判断是谁触发的中断
         task_status = 2; //设置任务状态为1,表示任务已完成
         Delay_ms(10);                       //消除机械按键的抖动
-        while(GPIO_ReadInputDataBit(GPIOB,GPIO_Pin_6)==1);
+        while(GPIO_ReadInputDataBit(GPIOB,GPIO_Pin_6)==0);
         Delay_ms(10);
         EXTI_ClearITPendingBit(EXTI_Line6); //需要手动清除中断标志位,否则会一直重复触发.
     }else if(EXTI_GetFlagStatus(EXTI_Line7)){

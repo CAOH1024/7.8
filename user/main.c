@@ -9,14 +9,14 @@ int main()
 	TIM3->CCR1=500;
 	TIM2->CCR2=500;
 	Timer4_Init(999,7199);	     //=====初始化定时器4 10HZ，用于定时
-	
+	Key_Init();
 	uart_init(9600);                //=====初始化串口1	
 	Delay_s(2);
 	
 	TIM_Cmd(TIM4,ENABLE);
 	x=0;
 	y=-19.5;
-	task_status = 2 ; // Initialize task status
+	task_status = 0 ; // Initialize task status
 	while(1)
 	{
 		switch (task_status) // Switch case for task status
@@ -37,13 +37,13 @@ int main()
 			case 3:
 				usart1_sendpackage(0x01);
 				while(Serial_RxFlag == 0); // Wait for data to be received
-				Data_Process(point, point + 1);
+				Data_Process(&point[0][0], &point[0][1]);
 				usart1_sendpackage(0x02);
 				while(Serial_RxFlag == 0); // Wait for data to be received
-				Data_Process(point + 2, point + 3);
+				Data_Process(&point[1][0], &point[1][1]);
 				usart1_sendpackage(0x03);
 				while(Serial_RxFlag == 0); // Wait for data to be received
-				Data_Process(point + 4, point + 5);			
+				Data_Process(&point[2][0], &point[2][1]);			
 				move_rac(point[0][0],point[0][1],point[1][0], point[1][1], point[2][0], point[2][1]);
 				task_status = 1; // Reset task status after completion
 		}

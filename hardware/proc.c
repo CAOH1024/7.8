@@ -84,7 +84,7 @@ void move_line(double x2, double y2)
 	while(1){
 		if(tim4_flag == 1){
 			line_walker(x_step, y_step); 
-			if(x > x2){
+			if((x < x2 && dir_x == dir_left)||(x > x2 && dir_x == dir_right)){
 				error_x = 0;
 				error_y = 0;
 				x = x2;

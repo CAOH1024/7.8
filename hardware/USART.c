@@ -39,8 +39,9 @@ uint16_t Serial_RxFlag;
 *********************************************************************************/
 void usart1_send(u8 data)
 {
-	USART1->DR = data;
-	while((USART1->SR&0x40)==0);	
+	USART_SendData(USART1,data);
+	
+	while(USART_GetFlagStatus(USART1,USART_FLAG_TXE)==0);	
 }
 
 void usart1_sendpackage(uint8_t data)
@@ -91,13 +92,13 @@ void uart_init(u32 bound)
 }
 
 void Data_Process(double *x, double *y){
-	int temp = Serial_Rx_HEXPackage[1] << 8 + Serial_Rx_HEXPackage[2];	
+	int temp = (Serial_Rx_HEXPackage[1] << 8) + Serial_Rx_HEXPackage[2];	
 	if(Serial_Rx_HEXPackage[0]){
 		*x = -1 * temp / 100.0;
 	} else{
 		*x = temp / 100.0;
 	}
-	temp = Serial_Rx_HEXPackage[4] << 8 + Serial_Rx_HEXPackage[5];
+	temp = (Serial_Rx_HEXPackage[4] << 8 )+ Serial_Rx_HEXPackage[5];
 	if(Serial_Rx_HEXPackage[3]){
 		*y = -1 * temp / 100.0;
 	} else {
